@@ -1,0 +1,21 @@
+<form (submit)="onSubmit($event)">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center form-group">
+            <label class="form-" for="task-name">Task Name</label>
+            <input class="form-control" name="task-name" id="task-name" type="text" placeholder="Task Name"
+                [(ngModel)]="taskName">
+        </div>
+    </div>
+    <div class="row justify-content-center form-group">
+        <div class="col-md-6 text-center">
+            <label for="task-description">Task Description</label>
+            <input class="form-control" name="task-description" id="task-description" type="text"
+                placeholder="Task Description" [(ngModel)]="taskDescription">
+        </div>
+    </div>
+    <div class="row mt-3 justify-content-center">
+        <div class="col-md-6">
+            <button class="btn btn-primary  w-100">Add Task</button>
+        </div>
+    </div>
+</form>

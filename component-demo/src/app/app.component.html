@@ -1,0 +1,13 @@
+<div>
+  Parent Component
+
+  <!-- <app-child-comp [inputData]="textVal"></app-child-comp> -->
+  
+  <!-- <app-child-comp [inputData]="textVal" [inputData1]="myArray"></app-child-comp> -->
+
+  <!-- <app-child-comp [inputData]="textVal" [inputData1]="myArray" [inputData2]="cricketers"></app-child-comp> -->
+   
+  <app-child-comp [inputData]="textVal" [inputData1]="myArray" [inputData2]="cricketers" (childMessage)="onChildInput($event)"></app-child-comp>
+  <h2>{{title}}</h2>
+  
+</div>

@@ -1,0 +1,31 @@
+<h1>My Name is {{name}}</h1>
+
+<h1>New Name is {{getUsername()}}</h1>
+
+<a [href]="link"> Link to Google</a>
+<br>  
+<img [src]="imageurl" [height]="height" [width]="width"> 
+<br>
+<button (click)="OnClick()">Click to Disable</button>
+<button [disabled]="disabled" (click)="OnClick1()">Click to Change Name</button>
+
+<hr>
+
+<h2>Counter</h2>
+<h2>Count is {{count}}</h2>
+
+<button (click)="IncrementCounter()">Increment ++</button>
+<button (click)="DecrementCounter()">Decrement --</button>
+<button (click)="Reset()">Reset</button>
+
+<hr>
+<br>
+<!-- <input type="text" #box (keydown.enter)="OnLocalRef(box.value)"> -->
+<input type="text" #box id="abc" name="abc">
+<br><br>
+<!-- <button (click)="OnLocalRef(box.value)">Change Name</button> -->
+<button (click)="OnLocalRef()">Change Name</button>
+
+
+<hr>
+

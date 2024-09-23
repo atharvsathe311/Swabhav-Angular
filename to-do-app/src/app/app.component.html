@@ -1,0 +1,14 @@
+<div class="container border">
+  <hr>
+  <h1 class="text-center">To Do App</h1>
+  <hr>
+
+  <div class="my-4">
+    <app-input-comp (taskNameEvent)="newTaskNameEvent($event)"></app-input-comp>
+  </div>
+
+  <hr>
+
+  <app-display-comp [taskList]="taskListParent" (taskDelete)="deleteTask($event)"
+    (taskStatus)="statusTask($event)"></app-display-comp>
+</div>

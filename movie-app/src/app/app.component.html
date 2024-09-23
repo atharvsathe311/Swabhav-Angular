@@ -1,0 +1,14 @@
+<div class="container">
+
+    <app-movie-input></app-movie-input>
+
+    <hr>
+
+    <app-movie-list-display></app-movie-list-display>
+
+    <hr>
+
+    <app-movie-details-display *ngIf="_movieService.movie()"
+        [movieObj]="_movieService.movie()"></app-movie-details-display>
+
+</div>

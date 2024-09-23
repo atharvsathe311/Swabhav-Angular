@@ -1,0 +1,102 @@
+<div class="container mt-3">
+
+    {{detailsForm.value.fullName}}
+    <form [formGroup]="detailsForm">
+        <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter your full name"
+                formControlName="fullName" [ngClass]="{'is-invalid': detailsForm.controls['fullName'].touched && detailsForm.controls['fullName'].invalid}">
+            <div *ngIf="detailsForm.controls['fullName'].touched && detailsForm.controls['fullName'].invalid" class="text-danger">
+                <div *ngIf="detailsForm.controls['fullName'].errors?.['required']">Full Name is required.</div>
+                <div *ngIf="detailsForm.controls['fullName'].errors?.['minlength']">Full Name must be at least 3 characters.</div>
+                <div *ngIf="detailsForm.controls['fullName'].errors?.['maxlength']">Full Name cannot exceed 50 characters.</div>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter your email" formControlName="email" [ngClass]="{'is-invalid': detailsForm.controls['email'].touched && detailsForm.controls['email'].invalid}">
+            <div *ngIf="detailsForm.controls['email'].touched && detailsForm.controls['email'].invalid" class="text-danger">
+                <div *ngIf="detailsForm.controls['email'].errors?.['required']">Email is required.</div>
+                <div *ngIf="detailsForm.controls['email'].errors?.['email']">Invalid email format.</div>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" formControlName="phoneNumber" [ngClass]="{'is-invalid': detailsForm.controls['phoneNumber'].touched && detailsForm.controls['phoneNumber'].invalid}">
+            <div *ngIf="detailsForm.controls['phoneNumber'].touched && detailsForm.controls['phoneNumber'].invalid" class="text-danger">
+                <div *ngIf="detailsForm.controls['phoneNumber'].errors?.['required']">Phone Number is required.</div>
+                <div *ngIf="detailsForm.controls['phoneNumber'].errors?.['pattern']">Phone Number is invalid.</div>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" class="form-control" id="dob" formControlName="dateOfBirth" [ngClass]="{'is-invalid': detailsForm.controls['dateOfBirth'].touched && detailsForm.controls['dateOfBirth'].invalid}">
+            <div *ngIf="detailsForm.controls['dateOfBirth'].touched && detailsForm.controls['dateOfBirth'].invalid" class="text-danger">
+                <div *ngIf="detailsForm.controls['dateOfBirth'].errors?.['required']">Date of Birth is required.</div>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <select class="form-control" id="gender" formControlName="gender" [ngClass]="{'is-invalid': detailsForm.controls['gender'].touched && detailsForm.controls['gender'].invalid}">
+                <option value="">Select...</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+            <div *ngIf="detailsForm.controls['gender'].touched && detailsForm.controls['gender'].invalid" class="text-danger">
+                <div *ngIf="detailsForm.controls['gender'].errors?.['required']">Gender is required.</div>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label for="address">Address</label>
+            <textarea class="form-control" id="address" rows="3" placeholder="Enter your address" formControlName="address" [ngClass]="{'is-invalid': detailsForm.controls['address'].touched && detailsForm.controls['address'].invalid}"></textarea>
+            <div *ngIf="detailsForm.controls['address'].touched && detailsForm.controls['address'].invalid" class="text-danger">
+                <div *ngIf="detailsForm.controls['address'].errors?.['required']">Address is required.</div>
+            </div>
+        </div>
+    
+        <button *ngIf="!detailsForm.invalid" type="submit" class="btn btn-primary" (click)="OnSubmit()">Submit</button>
+    </form>
+    
+
+</div>
+
+<div class="container">
+    <br>
+    <h2>Angular Pipe Examples</h2>
+
+    <p>Async Observable: {{ asyncData$ | async }}</p>
+
+    <p>Price: {{ 2500 | currency: 'USD' }}</p>
+
+    <p>Today: {{ today | date: 'fullDate' }}</p>
+
+    <p>Decimal Value: {{ 3.14159 | number: '1.4' }}</p>
+
+    <p>{{ itemCount | i18nPlural: itemMapping }}</p>
+
+    <p>{{ gender | i18nSelect: genderMapping }}</p>
+
+    <p>{{ user | json }}</p>
+
+    <ul>
+        <li *ngFor="let item of user | keyvalue">{{ item.key }}: {{ item.value }}</li>
+    </ul>
+
+    <p>{{ 'Hello World!' | lowercase }}</p>
+
+    <p>{{ 0.5678 | percent: '.2' }}</p>
+
+    <p>{{ 'Angular Pipes' | slice: 0:7 }}</p>
+    <p>{{ [1, 2, 3, 4, 5] | slice: 1:4 }}</p>
+
+    <p>{{ 'angular pipes example' | titlecase }}</p>
+
+    <p>{{ 'angular' | uppercase }}</p>
+
+</div>

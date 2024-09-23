@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Directive</title>
+</head>
+<body>
+  <p *ngIf="myBool" class="h2">Hello All</p>
+
+  <p *ngIf="myBool; then ifBlock; else elseBlock;"></p>
+
+  <ng-template #ifBlock>
+    <p>Hello All in If Block Status is {{myBool}}</p>
+  </ng-template>
+
+  <ng-template #elseBlock>
+    <p>Hello All in Else Block Status is {{myBool}}</p>
+  </ng-template>
+
+  <ul>
+    <li *ngFor="let name of myArray,index as i">{{i}} {{name}}</li>
+  </ul>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Index</th>
+        <th>Name</th>
+        <th>Runs</th>
+        <th>Wickets</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let player of cricketers;index as i">
+        <td>{{i+1}}</td>
+        <td>{{player.name}}</td>
+        <td>{{player.runs}}</td>
+        <td>{{player.wickets}}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <button class="btn btn-primary" (click)="OnClick()">Click Me</button>
+
+  <div class="container h2" style="color: azure;" [ngClass]="{'bg-success':isConditionTrue, 'bg-danger':!isConditionTrue }">
+    Hello All
+  </div>
+
+  <div class="container h2" [ngStyle]="{'color':textColor}">
+    Hello All
+  </div>
+
+  <div class="container" [ngSwitch]="textColor">
+    <h1 *ngSwitchCase="'red'" style="color: red;">{{textColor}}</h1>
+    <h1 *ngSwitchCase="'green'" style="color: rgb(43, 255, 0);">{{textColor}}</h1>
+    <h1 *ngSwitchCase="'blue'" style="color: rgb(0, 110, 255);">{{textColor}}</h1>
+    <h1 *ngSwitchCase="'yellow'" style="color: rgb(241, 255, 48);">{{textColor}}</h1>
+    <h1 *ngSwitchDefault style="color: rgb(0, 0, 0);">{{textColor}}</h1>
+    
+  </div>
+
+  <div appCustom [customColor]="'black'">Any Custom Color</div>
+  <br>
+  
+  <div appHoverHighlight [customColor]="'green'" class="container h2">
+    Hello All
+  </div>
+
+  <!-- Two way data binding using ng model -->
+   <input type="text" for="username" [(ngModel)]="myText">
+
+   <div>{{myText}}</div>
+
+
+</body>
+</html>

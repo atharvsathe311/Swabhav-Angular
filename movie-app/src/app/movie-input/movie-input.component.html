@@ -1,0 +1,67 @@
+<form class="my-3" (submit)="OnSubmit($event)" #form="ngForm">
+
+    <h2 class="text-center">
+        <strong>Add Movie</strong>
+    </h2>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="movie-title" class="form-label"><strong>Title:</strong></label>
+                <input type="text" required minlength="3" maxlength="25" pattern="[a-zA-Z]{3,26}" id="movie-title" name="movie-title" #movietitle="ngModel" class="form-control" [(ngModel)]="movieTitle" [ngClass]="{'is-invalid' : movietitle.touched && movietitle.invalid}">
+                <div *ngIf="movietitle.touched && movietitle.invalid && movietitle.touched" class="text-danger">
+                    <div *ngIf="movietitle.errors?.['required']">Movie Title is required.</div>
+                    <div *ngIf="movietitle.errors?.['minlength']">Movie Title must be at least 1 character.</div>
+                    <div *ngIf="movietitle.errors?.['maxlength']">Movie Title cannot exceed 25 characters.</div>
+                    <div *ngIf="movietitle.errors?.['pattern']">Movie Title must contain only letters.</div>
+                   </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="movie-year" class="form-label"><strong>Year:</strong></label>
+                <input type="text" required minlength="4" maxlength="4" pattern="[0-9]{4}" id="movie-year" name="movie-year" #movieyear="ngModel" class="form-control" [(ngModel)]="movieYear" [ngClass]="{'is-invalid' : movieyear.touched && movieyear.invalid}">
+                <div *ngIf="movieyear.touched && movieyear.invalid" class="text-danger">
+                    <div *ngIf="movieyear.errors?.['required']">Movie Year is required.</div>
+                    <div *ngIf="movieyear.errors?.['minlength']">Movie Year must be exactly 4 digits.</div>
+                    <div *ngIf="movieyear.errors?.['maxlength']">Movie Year must be exactly 4 digits.</div>
+                    <div *ngIf="movieyear.errors?.['pattern']">Movie Year must be a valid year (YYYY).</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="movie-rating" class="form-label"><strong>Rating:</strong></label>
+                <input type="text" required minlength="1" maxlength="1" pattern="[1-5]" id="movie-rating" name="movie-rating" #movierating="ngModel" class="form-control" [(ngModel)]="movieRating" [ngClass]="{'is-invalid' : movierating.touched && movierating.invalid}">
+                <div *ngIf="movierating.touched && movierating.invalid" class="text-danger">
+                    <div *ngIf="movierating.errors?.['required']">Movie Rating is required.</div>
+                    <div *ngIf="movierating.errors?.['minlength']">Movie Rating must be 1 character.</div>
+                    <div *ngIf="movierating.errors?.['maxlength']">Movie Rating must be 1 character.</div>
+                    <div *ngIf="movierating.errors?.['pattern']">Movie Rating must be a number between 1 and 5.</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="movie-genre" class="form-label"><strong>Genre:</strong></label>
+                <input type="text" required minlength="1" maxlength="25" pattern="[a-zA-Z]{1,26}" id="movie-genre" name="movie-genre" #moviegenre="ngModel" class="form-control" [(ngModel)]="movieGenre" [ngClass]="{'is-invalid' : moviegenre.touched && moviegenre.invalid}">
+                <div *ngIf="moviegenre.touched && moviegenre.invalid" class="text-danger">
+                    <div *ngIf="moviegenre.errors?.['required']">Movie Genre is required.</div>
+                    <div *ngIf="moviegenre.errors?.['minlength']">Movie Genre must be at least 1 character.</div>
+                    <div *ngIf="moviegenre.errors?.['maxlength']">Movie Genre cannot exceed 25 characters.</div>
+                    <div *ngIf="moviegenre.errors?.['pattern']">Movie Genre must contain only letters.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3 justify-content-center">
+        <div class="col-md-6">
+            <button [disabled]="form.invalid" class="btn btn-primary w-100">Add Movie</button>
+        </div>
+    </div>
+</form>
+
